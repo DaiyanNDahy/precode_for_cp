@@ -3,9 +3,9 @@ using namespace std;
 
 const int m=1000000007;
 
-long long fact[2001];
+long long fact[200001],dp[3001],inv_fact[200001];
 
-long long bigmod(long long x, long long r){
+long long bigmod(int x, int r){
 
     if(r==0) return 1;
 
@@ -22,14 +22,23 @@ void modfactorial(){
 
 fact[0]=1;
 
-for(int i=1;i<=2000;i++) fact[i]=(fact[i-1]*i)%m;
+inv_fact[0]=bigmod(1,m-2);
 
+for(int i=1;i<=200000;i++) fact[i]=(fact[i-1]*i)%m,inv_fact[i]=bigmod(fact[i],m-2);
 }
 
-long long ncr(long long n,long long r){
+long long ncr(int n,int r){
 
 if(r>n) return 0;
 
-return ((fact[n]*bigmod(fact[n-r],m-2))%m*bigmod(fact[r],m-2))%m;
+return ((fact[n]*inv_fact[n-r])%m*inv_fact[r])%m;
 
+}
+
+int main(){
+   
+   modfactorial();
+
+   
+   return 0;
 }
