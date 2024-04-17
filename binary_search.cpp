@@ -1,18 +1,21 @@
+#include "bits/stdc++.h"
+using namespace std;
+bool check(int x){
 
-bool check(){
-    
 }
+int main()
+{
 
-int main(){
 
-    int lo=, hi=;
-
-    while(lo<=hi){
-       
-        int mid=(lo+hi)/2;
-        
-        if(check(mid)) hi=mid+1;
-
-        else lo=mid-1;
+    int lo=1, hi=1e9,mid;
+    while(lo<hi)
+    {
+        mid=(lo+hi)/2;
+        if(check(mid)) hi=mid;
+        else lo=mid+1;
     }
+    if(lo*lo==sum) puts("Yes");
+    else puts("No");
+
+return 0;
 }
